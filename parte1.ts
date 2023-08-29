@@ -1,30 +1,27 @@
-/*
-Como formatie, tuve que vincular todo de nuevo, esto es una prueba de commit and push
-*/
 
-class sistemaDeStock { 
+class sistemaDeStock {
 
-    private elementosDisponibles: string[];
-    private elementosVendidos: string[] ;
+    private elementosDisponibles: productoKiosco[];
+    private elementosVendidos: productoKiosco[];
 
     public constructor() {
         this.elementosDisponibles = [];
         this.elementosVendidos = [];
     }
 
-    public agregaElemento(item: string): void {
+    public agregaElemento(item: productoKiosco): void {
         this.elementosDisponibles.push(item);
     }
 
-    public agregaElementoVendido(item: string): void {
+    public agregaElementoVendido(item: productoKiosco): void {
         this.elementosVendidos.push(item);
     }
 
-    public obtenerElementosDisponibles(): string[] {
+    public obtenerElementosDisponibles(): productoKiosco[] {
         return this.elementosDisponibles;
     }
 
-    public obtenerElementosVendidos(): string[] {
+    public obtenerElementosVendidos(): productoKiosco[] {
         return this.elementosVendidos;
     }
 }
@@ -32,12 +29,33 @@ class sistemaDeStock {
 class productoKiosco {
 
     private nombreProducto: string;
+    private precioProducto: number;
+    private cantidadProducto: number;
 
-    public constructor() {
-        this.nombreProducto = '';
+    public constructor(nombre: string, precio: number, stock: number) {
+        this.nombreProducto = nombre;
+        this.precioProducto = precio;
+        this.cantidadProducto = stock;
     }
 
     public obtenerNombreProducto(): string {
         return this.nombreProducto;
     }
+
+    public obtenerPrecioProducto(): number {
+        return this.precioProducto;
+    }
+
+    public obtenerCantidadProcuto(): number {
+        return this.cantidadProducto;
+    }
 }
+
+
+let stockDeKiosquito = new sistemaDeStock();
+
+let cigarrilosMarlboro = new productoKiosco('Marlboro', 850, 10);
+
+console.log(cigarrilosMarlboro);
+
+stockDeKiosquito.agregaElemento(cigarrilosMarlboro);
