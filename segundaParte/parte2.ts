@@ -71,6 +71,49 @@ class alumno {
     }
 
     public calcularPromedio(): number {
+        let promedio: number = 0;
+        let suma: number = 0;
+        let divisor: number = 0;
+        for (let i: number = 0; i < this.examenes.length; i++) {
+            suma += this.examenes[i].obtenerNotaExamen();
+            divisor++;
+        }
+        promedio = suma / divisor;
+        return promedio;
+    }
+}
+
+class gestionDeAlumnos {
+
+    private alumnos: alumno[]
+
+    public constructor() {
+        this.alumnos = [];
+    }
+
+    public obtenerAlumnos(): alumno[] {
+        return this.alumnos;
+    }
+
+    public agregarAlumno(alumno: alumno): void {
+        this.alumnos.push(alumno);
+    }
+
+    public obtenerPromedioGeneral(): number {
         return 0;
     }
 }
+
+
+let escuelaSecundaria: gestionDeAlumnos = new gestionDeAlumnos();
+
+let datosUno: datosAlumno = new datosAlumno('Emiliano', 'Zulaica', 17, 30202020);
+let examenMat: examen = new examen('Matematicas', 10);
+let alumnoUno: alumno = new alumno(datosUno, examenMat);
+
+let datosDos: datosAlumno = new datosAlumno('Emmanuel', 'Spinella', 18, 30101100);
+let examenLit: examen = new examen('Literatura', 8);
+let alumnoDos: alumno = new alumno(datosDos, examenLit);
+
+
+
