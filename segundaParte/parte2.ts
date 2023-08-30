@@ -1,3 +1,5 @@
+const rls = require('readline-sync');
+
 class datosAlumno {
 
     private nombre: string;
@@ -53,9 +55,9 @@ class alumno {
     private datosPersonales: datosAlumno;
     private examenes: examen[];
 
-    public constructor(alumno: datosAlumno, examen: examen) {
+    public constructor(alumno: datosAlumno, examen: examen[]) {
         this.datosPersonales = alumno;
-        this.examenes.push(examen);
+        this.examenes = examen;
     }
 
     public obtenerDatosPersonales(): datosAlumno {
@@ -100,7 +102,21 @@ class gestionDeAlumnos {
     }
 
     public obtenerPromedioGeneral(): number {
-        return 0;
+        if (this.alumnos.length > 0) {
+        let suma: number = 0;
+        let divisor: number = 0;
+        let promedioGeneral: number = 0;
+        for (let i: number = 0; i < this.alumnos.length; i++) {
+            suma += this.alumnos[i].calcularPromedio();
+            divisor++;
+        }
+        console.log(suma);
+        console.log(divisor);
+        promedioGeneral = suma / divisor;
+        return promedioGeneral;
+        } else {
+            return 0;
+        }
     }
 }
 
@@ -108,12 +124,24 @@ class gestionDeAlumnos {
 let escuelaSecundaria: gestionDeAlumnos = new gestionDeAlumnos();
 
 let datosUno: datosAlumno = new datosAlumno('Emiliano', 'Zulaica', 17, 30202020);
-let examenMat: examen = new examen('Matematicas', 10);
-let alumnoUno: alumno = new alumno(datosUno, examenMat);
+let examenMat1: examen = new examen('Matematicas', 10);
+let alumnoUno: alumno = new alumno(datosUno, [examenMat1]);
 
 let datosDos: datosAlumno = new datosAlumno('Emmanuel', 'Spinella', 18, 30101100);
-let examenLit: examen = new examen('Literatura', 8);
-let alumnoDos: alumno = new alumno(datosDos, examenLit);
+let examenLit1: examen = new examen('Literatura', 8);
+let alumnoDos: alumno = new alumno(datosDos, [examenLit1]);
 
+let examenHist1: examen = new examen('Historia', 7);
+alumnoUno.agregarExamen(examenHist1);
 
+let examenHist2: examen = new examen('Historia', 9);
+alumnoDos.agregarExamen(examenHist2);
+
+//console.log(alumnoUno.calcularPromedio());
+//console.log(alumnoDos.calcularPromedio());
+
+escuelaSecundaria.agregarAlumno(alumnoUno);
+escuelaSecundaria.agregarAlumno(alumnoDos);
+
+console.log(escuelaSecundaria.obtenerPromedioGeneral());
 
