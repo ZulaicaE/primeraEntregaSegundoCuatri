@@ -1,3 +1,4 @@
+var readline = require('readline-sync');
 var datosAlumno = /** @class */ (function () {
     function datosAlumno(nombre, apellido, edad, DNI) {
         this.nombre = nombre;
@@ -47,15 +48,20 @@ var alumno = /** @class */ (function () {
         this.examenes.push(examen);
     };
     alumno.prototype.calcularPromedio = function () {
-        var promedio = 0;
-        var suma = 0;
-        var divisor = 0;
-        for (var i = 0; i < this.examenes.length; i++) {
-            suma += this.examenes[i].obtenerNotaExamen();
-            divisor++;
+        if (this.examenes.length > 0) {
+            var promedio = 0;
+            var suma = 0;
+            var divisor = 0;
+            for (var i = 0; i < this.examenes.length; i++) {
+                suma += this.examenes[i].obtenerNotaExamen();
+                divisor++;
+            }
+            promedio = suma / divisor;
+            return promedio;
         }
-        promedio = suma / divisor;
-        return promedio;
+        else {
+            return 0;
+        }
     };
     return alumno;
 }());
@@ -78,31 +84,28 @@ var gestionDeAlumnos = /** @class */ (function () {
                 suma += this.alumnos[i].calcularPromedio();
                 divisor++;
             }
-            console.log(suma);
-            console.log(divisor);
             promedioGeneral = suma / divisor;
             return promedioGeneral;
         }
         else {
-            console.log('No hay alumnos ingresados al sistema');
             return 0;
         }
     };
     return gestionDeAlumnos;
 }());
 var escuelaSecundaria = new gestionDeAlumnos();
-var datosUno = new datosAlumno('Emiliano', 'Zulaica', 17, 30202020);
+var datosUno = new datosAlumno('Emiliano', 'Z', 17, 30202020);
 var examenMat1 = new examen('Matematicas', 10);
 var alumnoUno = new alumno(datosUno, [examenMat1]);
-var datosDos = new datosAlumno('Emmanuel', 'Spinella', 18, 30101100);
+var datosDos = new datosAlumno('Emmanuel', 'S', 18, 30101100);
 var examenLit1 = new examen('Literatura', 8);
 var alumnoDos = new alumno(datosDos, [examenLit1]);
 var examenHist1 = new examen('Historia', 7);
 alumnoUno.agregarExamen(examenHist1);
 var examenHist2 = new examen('Historia', 9);
 alumnoDos.agregarExamen(examenHist2);
-//console.log(alumnoUno.calcularPromedio());
-//console.log(alumnoDos.calcularPromedio());
-//escuelaSecundaria.agregarAlumno(alumnoUno);
-//escuelaSecundaria.agregarAlumno(alumnoDos);
+console.log(alumnoUno.calcularPromedio());
+console.log(alumnoDos.calcularPromedio());
+escuelaSecundaria.agregarAlumno(alumnoUno);
+escuelaSecundaria.agregarAlumno(alumnoDos);
 console.log(escuelaSecundaria.obtenerPromedioGeneral());

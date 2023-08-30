@@ -1,5 +1,3 @@
-const rls = require('readline-sync');
-
 class datosAlumno {
 
     private nombre: string;
@@ -73,6 +71,7 @@ class alumno {
     }
 
     public calcularPromedio(): number {
+        if (this.examenes.length > 0) {
         let promedio: number = 0;
         let suma: number = 0;
         let divisor: number = 0;
@@ -82,6 +81,9 @@ class alumno {
         }
         promedio = suma / divisor;
         return promedio;
+        } else {
+            return 0;
+        }
     }
 }
 
@@ -110,8 +112,6 @@ class gestionDeAlumnos {
             suma += this.alumnos[i].calcularPromedio();
             divisor++;
         }
-        console.log(suma);
-        console.log(divisor);
         promedioGeneral = suma / divisor;
         return promedioGeneral;
         } else {
@@ -121,13 +121,15 @@ class gestionDeAlumnos {
 }
 
 
+
+
 let escuelaSecundaria: gestionDeAlumnos = new gestionDeAlumnos();
 
-let datosUno: datosAlumno = new datosAlumno('Emiliano', 'Zulaica', 17, 30202020);
+let datosUno: datosAlumno = new datosAlumno('Emiliano', 'Z', 17, 30202020);
 let examenMat1: examen = new examen('Matematicas', 10);
 let alumnoUno: alumno = new alumno(datosUno, [examenMat1]);
 
-let datosDos: datosAlumno = new datosAlumno('Emmanuel', 'Spinella', 18, 30101100);
+let datosDos: datosAlumno = new datosAlumno('Emmanuel', 'S', 18, 30101100);
 let examenLit1: examen = new examen('Literatura', 8);
 let alumnoDos: alumno = new alumno(datosDos, [examenLit1]);
 
@@ -137,8 +139,9 @@ alumnoUno.agregarExamen(examenHist1);
 let examenHist2: examen = new examen('Historia', 9);
 alumnoDos.agregarExamen(examenHist2);
 
-//console.log(alumnoUno.calcularPromedio());
-//console.log(alumnoDos.calcularPromedio());
+console.log(alumnoUno.calcularPromedio());
+console.log(alumnoDos.calcularPromedio());
+
 
 escuelaSecundaria.agregarAlumno(alumnoUno);
 escuelaSecundaria.agregarAlumno(alumnoDos);
