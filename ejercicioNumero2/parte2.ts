@@ -78,15 +78,15 @@ class alumno {
 
     public calcularPromedio(): number {
         if (this.examenes.length > 0) {
-        let promedio: number = 0;
-        let suma: number = 0;
-        let divisor: number = 0;
-        for (let i: number = 0; i < this.examenes.length; i++) {
-            suma += this.examenes[i].obtenerNotaExamen();
-            divisor++;
-        }
-        promedio = suma / divisor;
-        return promedio;
+            let promedio: number = 0;
+            let suma: number = 0;
+            let divisor: number = 0;
+            for (let i: number = 0; i < this.examenes.length; i++) {
+                suma += this.examenes[i].obtenerNotaExamen();
+                divisor++;
+            }
+            promedio = suma / divisor;
+            return promedio;
         } else {
             return 0;
         }
@@ -113,15 +113,15 @@ class gestionDeAlumnos {
 
     public obtenerPromedioGeneral(): number {
         if (this.alumnos.length > 0) {
-        let suma: number = 0;
-        let divisor: number = 0;
-        let promedioGeneral: number = 0;
-        for (let i: number = 0; i < this.alumnos.length; i++) {
-            suma += this.alumnos[i].calcularPromedio();
-            divisor++;
-        }
-        promedioGeneral = suma / divisor;
-        return promedioGeneral;
+            let suma: number = 0;
+            let divisor: number = 0;
+            let promedioGeneral: number = 0;
+            for (let i: number = 0; i < this.alumnos.length; i++) {
+                suma += this.alumnos[i].calcularPromedio();
+                divisor++;
+            }
+            promedioGeneral = suma / divisor;
+            return promedioGeneral;
         } else {
             return 0;
         }

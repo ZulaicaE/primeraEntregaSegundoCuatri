@@ -1,3 +1,4 @@
+// Creo el sitema de stock que va a utilizar la clase productoKiosco.
 
 class sistemaDeStock {
 
@@ -42,6 +43,8 @@ class sistemaDeStock {
     }
 }
 
+// Clase producto kiosco.
+
 class productoKiosco {
 
     private nombreProducto: string;
@@ -75,7 +78,11 @@ class productoKiosco {
     }
 }
 
+// Creo el sistema de stock.
+
 let stockDeKiosquito = new sistemaDeStock();
+
+// Creo un array con productos.
 
 let arrayDeStock: productoKiosco[] = [];
 
@@ -87,13 +94,25 @@ arrayDeStock.push(cigarrilosMarlboro);
 arrayDeStock.push(alfajorGuaymallen);
 arrayDeStock.push(surtidosBagley);
 
+// Y los ingreso al sistema.
+
 for (let i: number = 0; i < arrayDeStock.length; i++) {
     stockDeKiosquito.agregaElemento(arrayDeStock[i]);
 }
 
 console.log(stockDeKiosquito);
 
+console.log('**********************');
+console.log('Dame 4 Marlboro de 20.');
+console.log('**********************');
+
+// Realizo una venta y verifico que los elementos disponibles y los vendidos.
+
 stockDeKiosquito.venderProducto('Marlboro', 4);
+
+console.log('**********************');
+console.log('Gracias (FUMAR ES MALO).')
+console.log('**********************');
 
 console.log(stockDeKiosquito);
 

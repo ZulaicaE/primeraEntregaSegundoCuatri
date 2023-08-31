@@ -1,3 +1,4 @@
+// Creo el sitema de stock que va a utilizar la clase productoKiosco.
 var sistemaDeStock = /** @class */ (function () {
     function sistemaDeStock() {
         this.elementosDisponibles = [];
@@ -34,6 +35,7 @@ var sistemaDeStock = /** @class */ (function () {
     };
     return sistemaDeStock;
 }());
+// Clase producto kiosco.
 var productoKiosco = /** @class */ (function () {
     function productoKiosco(nombre, precio, stock) {
         this.nombreProducto = nombre;
@@ -57,7 +59,9 @@ var productoKiosco = /** @class */ (function () {
     };
     return productoKiosco;
 }());
+// Creo el sistema de stock.
 var stockDeKiosquito = new sistemaDeStock();
+// Creo un array con productos.
 var arrayDeStock = [];
 var cigarrilosMarlboro = new productoKiosco('Marlboro', 850, 10);
 var alfajorGuaymallen = new productoKiosco('Guaymallen', 100, 20);
@@ -65,9 +69,17 @@ var surtidosBagley = new productoKiosco('Surtidos Bagley', 600, 5);
 arrayDeStock.push(cigarrilosMarlboro);
 arrayDeStock.push(alfajorGuaymallen);
 arrayDeStock.push(surtidosBagley);
+// Y los ingreso al sistema.
 for (var i = 0; i < arrayDeStock.length; i++) {
     stockDeKiosquito.agregaElemento(arrayDeStock[i]);
 }
 console.log(stockDeKiosquito);
+console.log('**********************');
+console.log('Dame 4 Marlboro de 20.');
+console.log('**********************');
+// Realizo una venta y verifico que los elementos disponibles y los vendidos.
 stockDeKiosquito.venderProducto('Marlboro', 4);
+console.log('**********************');
+console.log('Gracias (FUMAR ES MALO).');
+console.log('**********************');
 console.log(stockDeKiosquito);

@@ -1,0 +1,13 @@
+1. Hay varios beneficios de usar un lenguaje tipado, lo mas importantes a mi parecer es la deteccion temprana de errores ya que, por ejemplo, si una funcion debe retornar
+un number ya nos avisara mas temprano que seria incorrecto que devolviera un string. Tambien implementamos un codigo mas limpio, claro y preciso (en otras palabras lindo) ... esto 
+facilita el trabajo en equipos grandes donde muchas personas deben leer el mismo codigo.
+
+2. Se llaman variables internas a los atributos que componen una clase, recomendablemente privados, son solo accesibles y modificables a travez de metodos. Se les dice Internas porque
+tienen un alcanze limitado (solo accsibles dentro del ambito donde fueron creadas).
+
+3. La diferencia entre una composicion y una herencia es grande. Una composicion es la creacion de una clase a partir de otras clases (en otras palabras crear un objeto a partir
+de otros objetos). Y la herencia se basa en crear una clase que aplique todo lo compone a su clase padre (atributos y metodos), a la vez, la clase hija puede agregar nuevos metodos 
+ó sobreescribir metodos de su padre.
+
+4. Typescript utiliza la declaracion de tipos para la deteccion temprana de errores (detectarlos en la compilacion y no ejecucion). Declarandole los tipos a los parametros de una funcion
+evitamos el error de pasarle otro diferente, entonces si una funcion espera un boolean y recibe un string, typescript se da cuenta de esto y nos ahorra tiempo en la correccion.
