@@ -1,25 +1,26 @@
-var readline = require('readline-sync');
-var datosAlumno = /** @class */ (function () {
-    function datosAlumno(nombre, apellido, edad, DNI) {
+// Clase con informacion del almuno.
+var datosPersonales = /** @class */ (function () {
+    function datosPersonales(nombre, apellido, edad, DNI) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.DNI = DNI;
     }
-    datosAlumno.prototype.obtenerNombre = function () {
+    datosPersonales.prototype.obtenerNombre = function () {
         return this.nombre;
     };
-    datosAlumno.prototype.obtenerApellido = function () {
+    datosPersonales.prototype.obtenerApellido = function () {
         return this.apellido;
     };
-    datosAlumno.prototype.obtenerEdad = function () {
+    datosPersonales.prototype.obtenerEdad = function () {
         return this.edad;
     };
-    datosAlumno.prototype.obtenerDNI = function () {
+    datosPersonales.prototype.obtenerDNI = function () {
         return this.DNI;
     };
-    return datosAlumno;
+    return datosPersonales;
 }());
+// Clase examen con nombre y nota de la materia.
 var examen = /** @class */ (function () {
     function examen(nombre, nota) {
         this.nombreMateria = nombre;
@@ -33,6 +34,7 @@ var examen = /** @class */ (function () {
     };
     return examen;
 }());
+// Clase alumno, requiere las clases datosAlumnos y examen.
 var alumno = /** @class */ (function () {
     function alumno(alumno, examen) {
         this.datosPersonales = alumno;
@@ -65,6 +67,7 @@ var alumno = /** @class */ (function () {
     };
     return alumno;
 }());
+// Clase gestion, obtiene los metodos de la clase alumno y agrega funcionalidad.
 var gestionDeAlumnos = /** @class */ (function () {
     function gestionDeAlumnos() {
         this.alumnos = [];
@@ -93,19 +96,24 @@ var gestionDeAlumnos = /** @class */ (function () {
     };
     return gestionDeAlumnos;
 }());
+// Creamos el sistema de gestion.
 var escuelaSecundaria = new gestionDeAlumnos();
-var datosUno = new datosAlumno('Emiliano', 'Z', 17, 30202020);
+// Ingresamos dos alumnos con sus respectivos datos y examenes.
+var datosUno = new datosPersonales('Emiliano', 'Z', 17, 30202020);
 var examenMat1 = new examen('Matematicas', 10);
 var alumnoUno = new alumno(datosUno, [examenMat1]);
-var datosDos = new datosAlumno('Emmanuel', 'S', 18, 30101100);
+var datosDos = new datosPersonales('Emmanuel', 'S', 18, 30101100);
 var examenLit1 = new examen('Literatura', 8);
 var alumnoDos = new alumno(datosDos, [examenLit1]);
+// Tambien podemos agregar examenes los arreglos dentro de las clases.
 var examenHist1 = new examen('Historia', 7);
 alumnoUno.agregarExamen(examenHist1);
 var examenHist2 = new examen('Historia', 9);
 alumnoDos.agregarExamen(examenHist2);
-console.log(alumnoUno.calcularPromedio());
-console.log(alumnoDos.calcularPromedio());
+// Los añadimos al sistema.
 escuelaSecundaria.agregarAlumno(alumnoUno);
 escuelaSecundaria.agregarAlumno(alumnoDos);
+// Y podemos calcular promedios individuales y generales.
+console.log(alumnoUno.calcularPromedio());
+console.log(alumnoDos.calcularPromedio());
 console.log(escuelaSecundaria.obtenerPromedioGeneral());

@@ -1,0 +1,9 @@
+1. Cuando ejecutamos el comando TSC en la terminal, estamos pidiendo al compilador de typescript que transcriva el archivo a un archivo javascript ejecuatable.
+
+2. Una clase esta organizada en atributos (recomendable que sean privados), un constructor(no es necesario pero tambien es recomendable) y los metodos con los que vamos a poder acceder
+y modificar los atributos de la clase.
+
+3. Es correcto que un metodo auxiliar sea publico, el porque va en que puede que sea necesario acceder a este desde una subclase, entonces no se pierde nada en hacerlo publico.
+
+4. La caracteristica principal de una interfaz es que obliga a las clases que la implementan a utilizar los metodos que ella tenga definida adentro, entonces establece un control
+sobre estas(clases). Una clase puede usar varias interfaces.

@@ -1,6 +1,6 @@
 // Clase con informacion del almuno.
 
-class datosAlumno {
+class datosPersonales {
 
     private nombre: string;
     private apellido: string;
@@ -56,15 +56,15 @@ class examen {
 
 class alumno {
 
-    private datosPersonales: datosAlumno;
+    private datosPersonales: datosPersonales;
     private examenes: examen[];
 
-    public constructor(alumno: datosAlumno, examen: examen[]) {
+    public constructor(alumno: datosPersonales, examen: examen[]) {
         this.datosPersonales = alumno;
         this.examenes = examen;
     }
 
-    public obtenerDatosPersonales(): datosAlumno {
+    public obtenerDatosPersonales(): datosPersonales {
         return this.datosPersonales;
     }
 
@@ -135,11 +135,11 @@ let escuelaSecundaria: gestionDeAlumnos = new gestionDeAlumnos();
 
 // Ingresamos dos alumnos con sus respectivos datos y examenes.
 
-let datosUno: datosAlumno = new datosAlumno('Emiliano', 'Z', 17, 30202020);
+let datosUno: datosPersonales = new datosPersonales('Emiliano', 'Z', 17, 30202020);
 let examenMat1: examen = new examen('Matematicas', 10);
 let alumnoUno: alumno = new alumno(datosUno, [examenMat1]);
 
-let datosDos: datosAlumno = new datosAlumno('Emmanuel', 'S', 18, 30101100);
+let datosDos: datosPersonales = new datosPersonales('Emmanuel', 'S', 18, 30101100);
 let examenLit1: examen = new examen('Literatura', 8);
 let alumnoDos: alumno = new alumno(datosDos, [examenLit1]);
 
