@@ -1,3 +1,5 @@
+// Clase con informacion del almuno.
+
 class datosAlumno {
 
     private nombre: string;
@@ -29,6 +31,8 @@ class datosAlumno {
     }
 }
 
+// Clase examen con nombre y nota de la materia.
+
 class examen {
 
     private nombreMateria: string;
@@ -47,6 +51,8 @@ class examen {
         return this.notaExamen;
     }
 }
+
+// Clase alumno, requiere las clases datosAlumnos y examen.
 
 class alumno {
 
@@ -87,6 +93,8 @@ class alumno {
     }
 }
 
+// Clase gestion, obtiene los metodos de la clase alumno y agrega funcionalidad.
+
 class gestionDeAlumnos {
 
     private alumnos: alumno[]
@@ -121,9 +129,11 @@ class gestionDeAlumnos {
 }
 
 
-
+// Creamos el sistema de gestion.
 
 let escuelaSecundaria: gestionDeAlumnos = new gestionDeAlumnos();
+
+// Ingresamos dos alumnos con sus respectivos datos y examenes.
 
 let datosUno: datosAlumno = new datosAlumno('Emiliano', 'Z', 17, 30202020);
 let examenMat1: examen = new examen('Matematicas', 10);
@@ -133,18 +143,22 @@ let datosDos: datosAlumno = new datosAlumno('Emmanuel', 'S', 18, 30101100);
 let examenLit1: examen = new examen('Literatura', 8);
 let alumnoDos: alumno = new alumno(datosDos, [examenLit1]);
 
+// Tambien podemos agregar examenes los arreglos dentro de las clases.
+
 let examenHist1: examen = new examen('Historia', 7);
 alumnoUno.agregarExamen(examenHist1);
 
 let examenHist2: examen = new examen('Historia', 9);
 alumnoDos.agregarExamen(examenHist2);
 
-console.log(alumnoUno.calcularPromedio());
-console.log(alumnoDos.calcularPromedio());
-
+// Los añadimos al sistema.
 
 escuelaSecundaria.agregarAlumno(alumnoUno);
 escuelaSecundaria.agregarAlumno(alumnoDos);
 
-console.log(escuelaSecundaria.obtenerPromedioGeneral());
+// Y podemos calcular promedios individuales y generales.
 
+console.log(alumnoUno.calcularPromedio());
+console.log(alumnoDos.calcularPromedio());
+
+console.log(escuelaSecundaria.obtenerPromedioGeneral());
